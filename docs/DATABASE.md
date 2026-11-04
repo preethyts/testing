@@ -7,7 +7,7 @@
 
 Use SQLite for the initial version. SQLite stores data in a local file and does not require a separately installed or running database server.
 
-Proposed database filename: `todo.db` (location to be finalized during implementation; keep it outside public static files).
+Database filename: `data/todo.db`, relative to the project root. The `data/` folder is outside public static files and the database is excluded from source control.
 
 ## 2. Initial table
 
@@ -41,7 +41,7 @@ This is a proposed schema. The implementation should also enforce non-empty trim
 - Editing a task updates `title` and `updated_at`.
 - Completing or reopening a task updates `is_completed` and `updated_at`.
 - Deleting a task removes its row.
-- Listing tasks should use a deterministic order; proposed default is newest first (`created_at` descending, then `id` descending).
+- Listing tasks uses newest first (`created_at` descending, then `id` descending).
 
 ## 5. Data access and safety
 
@@ -53,6 +53,5 @@ This is a proposed schema. The implementation should also enforce non-empty trim
 
 ## 6. Open decisions
 
-- Final database file location.
-- Maximum task-title length.
-- Whether timestamps are stored in UTC (recommended) and formatted for display in the browser's local time.
+- Timestamps are stored in UTC ISO 8601 format, ending in `Z`.
+- Task title maximum is 200 characters; trimming and length validation occur in the backend.

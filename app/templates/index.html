@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My To-Do List</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header><h1>My To-Do List</h1><p>Keep track of the things you want to do.</p></header>
+    <form id="task-form" novalidate>
+      <label for="new-task">New task</label>
+      <div class="add-task-row"><input id="new-task" name="title" type="text" maxlength="200" placeholder="What needs doing?" autocomplete="off" required><button id="add-button" type="submit">Add task</button></div>
+    </form>
+    <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+    <p id="loading" class="loading" hidden>Loading tasks…</p>
+    <ul id="task-list" class="task-list" aria-label="Tasks"></ul>
+    <p id="empty-state" class="empty-state" hidden>No tasks yet. Add one above to get started.</p>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

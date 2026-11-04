@@ -32,7 +32,7 @@ Provide a simple browser-based task list. The project is also intended as a lear
 - An operation targeting a task that does not exist should return an appropriate not-found response.
 - Invalid input should return a clear client error.
 
-A maximum task-title length is **TBD** and should be agreed before implementation.
+A task title is limited to **200 characters**. This practical initial default was selected during implementation and is enforced by the backend.
 
 ## 5. Non-functional requirements
 
@@ -67,6 +67,5 @@ Specific performance, availability, accessibility, and security targets are not 
 
 ## 8. Open decisions
 
-- Maximum allowed task-title length.
-- Whether completed tasks appear in the same list or a separate section. Initial recommendation: same list, visually distinguished.
-- Whether task ordering is oldest-first or newest-first. Initial recommendation: newest-first.
+- Completed tasks appear in the same list and are visually distinguished.
+- Tasks are ordered newest first.

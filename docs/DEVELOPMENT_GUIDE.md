@@ -14,14 +14,15 @@ A virtual environment is recommended so project dependencies remain isolated.
 
 ## 2. Proposed dependencies
 
-The initial backend dependency is:
+The application dependencies are:
 
 - `fastapi`
 - `uvicorn[standard]`
+- `pytest` and `httpx` for automated API tests
 
 Python's built-in `sqlite3` module is sufficient for the proposed simple database access, so a separate ORM is not required initially.
 
-Exact dependency versions should be selected and pinned when implementation begins.
+Compatible version ranges are recorded in `requirements.txt`.
 
 ## 3. Local setup outline
 
@@ -54,7 +55,7 @@ Then open:
 - Application: `http://127.0.0.1:8000`
 - FastAPI interactive API documentation: `http://127.0.0.1:8000/docs`
 
-These URLs assume the proposed local development configuration.
+These URLs are the implemented local development configuration.
 
 ## 5. Git basics
 
@@ -90,4 +91,4 @@ Do not commit `.venv/`, local database files, secrets, or machine-specific files
 
 ## 8. Important note
 
-This guide documents a proposed setup. No setup commands have been executed and no application has been built as part of this documentation package.
+SQLite is created automatically at `data/todo.db` on application startup. Run `pytest` from the project root to execute the API tests.

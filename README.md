@@ -1,6 +1,6 @@
 # Basic To-Do Application
 
-**Project status:** Initial documentation baseline  
+**Project status:** Implemented local learning application
 **Scope:** A small browser-based To-Do application for learning AI-assisted software development.
 
 ## 1. Overview
@@ -20,7 +20,7 @@ It is intentionally small. The first version does not include user accounts, aut
 | Version control | Git |
 | AI development workflow | ChatGPT for planning/review; Codex for repository coding tasks |
 
-These are the proposed choices for the learning project, not evidence of an implemented system. The database access approach can be revisited if the project grows.
+These choices are implemented for the first version. The database access approach can be revisited if the project grows.
 
 ## 3. Main features
 
@@ -53,7 +53,7 @@ basic-todo/
     └── CODEX_INSTRUCTIONS.md
 ```
 
-This is a suggested structure only. No application files or implementation are included in this documentation package.
+The implementation also includes `tests/test_api.py` for API coverage and a local `data/` directory that is created automatically for the SQLite database. The database itself is ignored by Git.
 
 ## 5. Documentation
 
@@ -66,11 +66,21 @@ Start with the documents in `docs/`:
 - [Development guide](docs/DEVELOPMENT_GUIDE.md)
 - [Codex instructions](docs/CODEX_INSTRUCTIONS.md)
 
-## 6. Current state
+## 6. Run locally (Windows PowerShell)
 
-- Requirements and technical design are documented at an introductory level.
-- Technology choices are proposed for a simple learning implementation.
-- No application code has been written.
-- No dependencies have been installed.
-- No tests or builds have been run.
-- Implementation requires separate authorization.
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+
+Open the application at `http://127.0.0.1:8000` and FastAPI's Swagger interface at `http://127.0.0.1:8000/docs`.
+
+Run the automated API tests with `pytest`.
+
+## 7. Implementation decisions
+
+- Task titles are trimmed, required, and limited to 200 characters.
+- Tasks are displayed newest first; completed tasks stay in the same list with a struck-through appearance.
+- SQLite data is stored in `data/todo.db`, outside the public static folder, with UTC ISO 8601 timestamps.
